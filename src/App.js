@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import InjectedCheckoutForm from "./CheckoutForm";
 
-function App() {
+const stripePromise = loadStripe("pk_test_51Ktrm3BrFfmMymN9umaNVcfcSy3EvqqTK0ejUmEvWMr3qYC2L7EXHJ1XVHUEsVioDBFsNvqjrqzeiDvw4sMRnDoj00PTuRWmMW")
+
+const App =  () => {
+  const options = {
+    clientSecret: `{{CLIENT_SECRET}}`,
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Elements stripe={stripePromise}>
+      <div>
+        Hello
+      </div>
+      <InjectedCheckoutForm/>
+    </Elements>
+  )
+
+
 }
 
-export default App;
+export default App
