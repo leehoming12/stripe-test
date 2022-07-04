@@ -34,7 +34,7 @@ const CheckoutForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form  action="/create-checkout-session" method="post">
             <label>
                 Card details
                 <CardElement
